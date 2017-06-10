@@ -1,0 +1,12 @@
+<% if user_signed_in? && current_user.is_admin %>
+	<%= link_to "edit" , edit_category_path(@category.id) %>
+	<%= link_to "destroy", category_path(@category.id) , method: :delete , data:{confirm: "Are you sure"} %>
+<% end -%>
+<h2><%=@category.name %> <%=@articles.length %> </h2> 
+<ol>
+		<% @articles.each do |article| %>
+			<li> Title: <%= link_to article.title, article_path(article.id) %><br> Description:- <%=article.body %> </li>
+		<%end%>
+	</ol>
+ 
+<%= link_to "back" , "/categories" %>

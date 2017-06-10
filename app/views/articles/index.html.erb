@@ -1,0 +1,17 @@
+<h2>Listing Articles <%= @articles.length %> </h2>
+ <% if user_signed_in? && current_user.is_admin %>
+ 	<%= link_to "Add Articles" ,new_article_path %>
+ <% end %>
+
+<% if @articles.empty? %>
+	<h3>Errors</h3>
+	<p>no product found</p>
+	<% end %>
+<ol>
+	<% @articles.each do |article| %>
+		<li><%=link_to article.title ,article_path(article.id) %> <b>
+		<%=Category.find(article.category_id).name %></b> <br> <%=article.body%>  </li>
+	<%end%>
+</ol>
+
+<%= link_to "back" , categories_path %>

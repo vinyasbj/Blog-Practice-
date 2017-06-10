@@ -1,0 +1,13 @@
+<h2>Add Comment</h2>
+<%=form_for @comment do |f| %>
+	<%= f.label :title, "Title" %><br>
+	<%= f.text_field :title %><br>
+
+	<%= f.label :body, "Body" %><br>
+	<%= f.text_area :body , row:150 ,column:150%><br>
+	<%= f.label :article_id, "Articel _Id" %><br>
+	<%= f.collection_select :article_id,Article.all, :id ,:title,prompt: "select Article" %><br>
+
+	<%= f.submit "Submit" %><br>
+
+<% end -%> 

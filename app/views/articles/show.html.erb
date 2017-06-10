@@ -1,0 +1,17 @@
+ <h2><%=@article.title %></h2>
+<% if user_signed_in? && current_user.is_admin %>
+ 	<%= link_to "edit", edit_article_path(@article.id) %>|
+ 	<%= link_to "destory", article_path(@article.id), method: :delete, data:{confirm: "Are you sure"} %>
+ <% end -%>
+ <p>Title : <%=@article.title %> </p>
+ <p>Body : <%=@article.body %> </p>
+ <p>Catergoy_Id : <%=link_to @article.category.name , category_path(@article.category_id) %></p>
+ <p>Published_Date : <%=@article.publish_date %> </p> 
+ <p>Comment:
+ <% @article.comments.each do |comment| %><br>
+ 	Title : <%=comment.title %><br>
+ 	Description: <%=comment.body %>
+ <% end %>
+  </p>
+ <br><%= link_to "Add Comment" , new_comment_path, class:"btn btn-primary" %><br>
+<%= link_to "back" , articles_path %>

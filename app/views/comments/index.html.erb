@@ -1,0 +1,11 @@
+<h2>listing all comments</h2>
+<% if @comments.empty? %>
+	<p>comments no found</p>
+	<% else %>
+	<% @comments.each do |comment| %>
+		<li>Title : <%=comment.title %> <br> Body: <%=comment.body%> <br> Article_id: <%=comment.article_id %> </li>
+	<% end -%>
+<% end -%>
+<% if user_signed_in? && current_user.is_admin %>
+	<%= link_to "Add new comment", new_comment_path %>
+<% end -%>
