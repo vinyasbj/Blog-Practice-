@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :advertisers
+
   resources :authors
 
   devise_for :users
